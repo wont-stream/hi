@@ -13,7 +13,10 @@ for (let i = 0; i < targets.length; i++) {
 
 combos.forEach(async (combo) => {
   try {
-    await $`bun build --compile --target=${combo} ./app/index.js --outfile dist/${combo}`;
+    await $`bun build --compile --target=${combo} ./app/index.js --outfile dist/${combo.replace(
+      "bun",
+      "hi"
+    )}`;
   } catch {
     console.log(`Attempted to build unsupported target: ${combo}`);
   }
