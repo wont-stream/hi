@@ -29,7 +29,7 @@ module.exports = async (filePath) => {
   };
 
   const sync = async () => {
-    Bun.write(JSON.stringify(storage), filePath);
+    return Bun.write(JSON.stringify(storage), filePath);
   };
 
   return { set, get, has, remove, removeAll };
