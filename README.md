@@ -1,6 +1,6 @@
 # hi
 
-a Local URL Shortener inspiered by tailscale's go.
+a Local URL Shortener inspiered by tailscale's [golink](https://github.com/tailscale/golink).
 
 Running:
 
