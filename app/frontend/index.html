@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/beercss/dist/cdn/beer.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/beercss/dist/cdn/beer.min.js"
+    ></script>
+  </head>
+  <body class="dark">
+    <main class="responsive absolute middle center">
+      <h3>hi: Local URL Shortener</h3>
+      <br />
+      <form id="create">
+        <div class="field textarea label suffix border">
+          <input type="url" id="link" name="link" />
+          <label>Link</label>
+          <i>link</i>
+        </div>
+        <div class="field textarea label suffix border">
+          <input type="text" id="slug" name="slug" />
+          <label>Slug</label>
+          <i>key</i>
+        </div>
+
+        <div class="grid large-space">
+          <div class="s6">
+            <button class="border small-round">
+              <i>send</i>
+              <span>Create</span>
+            </button>
+          </div>
+          <div class="s6 right-align">
+            <button class="border small-round" id="reload">
+              <i>refresh</i>
+              <span>Reload</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <article id="slugs"></article>
+    </main>
+    <div class="snackbar" id="snackbar">Some text here</div>
+    <script src="index.js"></script>
+  </body>
+</html>
