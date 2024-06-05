@@ -1,5 +1,7 @@
 import { $ } from "bun";
 
+await $`bun build ./app/index.js >> ./dist.js`;
+
 const targets = ["linux", "windows", "darwin"];
 const arch = ["x64-modern", "arm64-modern", "x64-baseline", "arm64-baseline"];
 
@@ -13,7 +15,7 @@ for (let i = 0; i < targets.length; i++) {
 
 combos.forEach(async (combo) => {
   try {
-    await $`bun build --compile --target=${combo} ./app/index.js --outfile dist/${combo.replace(
+    await $`bun build --compile --target=${combo} ./dist.js --outfile dist/${combo.replace(
       "bun",
       "hi"
     )}`;
