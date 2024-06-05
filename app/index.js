@@ -1,5 +1,7 @@
-const DB = require("./db");
+import DB from "./db";
 const db = await DB("./db.json");
+
+import files from "./imports";
 
 const app = {
   GET: {},
@@ -31,19 +33,35 @@ Bun.serve({
 });
 
 app.GET["/"] = async () => {
-  return new Response(Bun.file("./frontend/index.html"));
+  return new Response(files.indexHTML, {
+    headers: {
+      "content-type": "text/html",
+    },
+  });
 };
 
 app.GET["/index.js"] = async () => {
-  return new Response(Bun.file("./frontend/index.js"));
+  return new Response(files.indexJS, {
+    headers: {
+      "content-type": "text/javascript",
+    },
+  });
 };
 
 app.GET["/templates/tableItem"] = async () => {
-  return new Response(Bun.file("./frontend/tableItem.html"));
+  return new Response(files.tableItemHTML, {
+    headers: {
+      "content-type": "text/html",
+    },
+  });
 };
 
 app.GET["/templates/divider"] = async () => {
-  return new Response(Bun.file("./frontend/divider.html"));
+  return new Response(files.dividerHTML, {
+    headers: {
+      "content-type": "text/html",
+    },
+  });
 };
 
 app.GET["/slugs"] = async () => {

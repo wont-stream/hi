@@ -1,4 +1,4 @@
-module.exports = async (filePath) => {
+export default async (filePath) => {
   if (!(await Bun.file(filePath).exists())) {
     await Bun.write(filePath, "{}");
   }
