@@ -1,4 +1,4 @@
 {
   "name": "hi",
-  "module": "index.js"
+  "module": "app/index.js"
 }

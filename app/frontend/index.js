@@ -1,5 +1,19 @@
 const slugTable = document.getElementById("slugs");
 const snackbar = document.getElementById("snackbar");
+let tableItemTemplate = "";
+let dividerTemplate = "";
+
+fetch("/templates/tableItem")
+  .then((content) => content.text())
+  .then((content) => {
+    tableItemTemplate = content;
+  });
+
+fetch("/templates/divider")
+  .then((content) => content.text())
+  .then((content) => {
+    dividerTemplate = content;
+  });
 
 document.getElementById("create").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -36,18 +50,11 @@ const loadSlugs = async () => {
   const slugs = Object.keys(data);
 
   slugs.forEach((slug, i) => {
-    html += `<a class="row padding">
-          <div class="max">
-            <h6 class="small">${slug}</h6>
-            <div>${data[slug]}</div>
-          </div>
-          <button class="border small-round" onclick="deleteSlug('${slug}')">
-            <i>close</i>
-            <span>Delete</span>
-          </button>
-        </a>`;
+    html += tableItemTemplate;
+    html = html.replaceAll("{{SLUG}}", slug);
+    html = html.replaceAll("{{URL}}", data[slug]);
     if (i + 1 !== slugs.length) {
-      html += `<div class="divider"></div>`;
+      html += dividerTemplate;
     }
   });
 

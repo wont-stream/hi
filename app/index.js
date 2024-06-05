@@ -38,6 +38,14 @@ app.GET["/index.js"] = async () => {
   return new Response(Bun.file("./frontend/index.js"));
 };
 
+app.GET["/templates/tableItem"] = async () => {
+  return new Response(Bun.file("./frontend/tableItem.html"));
+};
+
+app.GET["/templates/divider"] = async () => {
+  return new Response(Bun.file("./frontend/divider.html"));
+};
+
 app.GET["/slugs"] = async () => {
   return new Response(Bun.file("./db.json"));
 };
