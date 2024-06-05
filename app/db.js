@@ -29,7 +29,7 @@ export default async (filePath) => {
   };
 
   const sync = async () => {
-    return Bun.write(JSON.stringify(storage), filePath);
+    return Bun.write(filePath, JSON.stringify(storage));
   };
 
   return { set, get, has, remove, removeAll };
