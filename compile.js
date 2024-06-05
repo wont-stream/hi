@@ -1,6 +1,6 @@
 import { $ } from "bun";
 
-await $`bun build ./app/index.js >> ./dist.js`;
+await $`bun build --minify ./app/index.js >> ./dist.js`;
 
 const targets = ["linux", "windows", "darwin"];
 const arch = ["x64-modern", "arm64-modern", "x64-baseline", "arm64-baseline"];
