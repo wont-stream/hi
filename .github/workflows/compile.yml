@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
-          
+
       - name: Compile
         id: compile
         run: bun run compile.js
@@ -28,4 +28,4 @@ jobs:
           prerelease: false
           automatic_release_tag: latest
           title: hi latest release
-          files: bun-*
+          files: dist/*
