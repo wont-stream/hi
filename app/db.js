@@ -1,6 +1,6 @@
 module.exports = async (filePath) => {
   if (!(await Bun.file(filePath).exists())) {
-    await Bun.write(db, "{}");
+    await Bun.write(filePath, "{}");
   }
 
   let storage = await Bun.file(filePath).json();
