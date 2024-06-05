@@ -1,34 +1,35 @@
 module.exports = async (filePath) => {
-  const db = Bun.file(filePath);
-
-  if (!(await db.exists())) {
+  if (!(await Bun.file(filePath).exists())) {
     await Bun.write(db, "{}");
   }
 
+  let storage = await Bun.file(filePath).json();
+
   const set = async (key, value) => {
-    const json = await db.json();
-    json[key] = value;
-    return Bun.write(db, JSON.stringify(json));
+    storage[key] = value;
+    return await sync();
   };
 
   const get = async (key) => {
-    const json = await db.json();
-    return json[key];
+    return storage[key];
   };
 
   const has = async (key) => {
-    const json = await db.json();
-    return json.hasOwnProperty(key);
+    return storage.hasOwnProperty(key);
   };
 
   const remove = async (key) => {
-    const json = await db.json();
-    delete json[key];
-    return Bun.write(db, JSON.stringify(json));
+    delete storage[key];
+    return await sync();
   };
 
   const removeAll = async () => {
-    return Bun.write(db, "{}");
+    storage = {};
+    return await sync();
+  };
+
+  const sync = async () => {
+    Bun.write(JSON.stringify(storage), filePath);
   };
 
   return { set, get, has, remove, removeAll };
